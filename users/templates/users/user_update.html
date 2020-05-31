@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block 'conteudo' %}
+<div class="container">
+    <br>
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-info" role="alert">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    <form method="POST" action="{% url 'user_update' user.id %}">
+        {% csrf_token %}
+        <ul class="list-group pad">
+            <li class="list-group-item active"><h1 class="titlepage">Atualização de dados</h1></li>
+            <li class="list-group-item ls">
+                <div class="form-group">
+                    <label for="new_first_name">Novo nome:</label>
+                    <input type="text" name="new_first_name" value="{{ user.first_name }}" class="form-control test" id="new_first_name" placeholder="Insira seu novo nome"/>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="form-group">
+                    <label for="new_last_name">Novo sobrenome:</label>
+                    <input type="text" name="new_last_name" value="{{ user.last_name }}" class="form-control test" id="new_last_name" placeholder="Insira seu novo sobrenome"/>
+                </div>
+            </li>
+
+            <li class="list-group-item ls">Criado em: {{ user.date_joined }}</li>
+            <li class="list-group-item active"></li>
+        </ul>
+        <a href="{% url 'user_profile' user.id %}">
+            <button type="submit" class="btn btn-primary botao">Salvar</button>
+        </a>
+    </form>
+</div>
+{% endblock %}

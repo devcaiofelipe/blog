@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block 'conteudo' %}
+<div class="container">
+    <br>
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-info" role="alert">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    <br>
+    <p class="h3">Deseja realmente deletar sua conta?</p>
+    <br>
+    <form method="POST" action="{% url 'user_delete' user.id %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="delete">Insira sua senha:</label>
+            <input type="password" name="password" class="form-control" id="delete" placeholder="Senha"/>
+            <button type="submit" class="btn btn-primary botao">Confirmar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

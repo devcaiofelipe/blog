@@ -1,0 +1,39 @@
+.footer {
+    bottom:0;
+    margin-top: 125px;
+}
+
+div.container4 {
+    height: 10em;
+    position: relative
+ }
+
+.titlepage {
+    margin-left: 320px;
+}
+
+.pad {
+    margin-top: 30px;
+}
+
+.icon {
+    display: inline-block;
+    margin-left: auto;
+}
+
+.botao {
+    margin-top: 40px;
+    margin-right: 20px;
+}
+
+.paragrafo {
+    font-size: 40px;
+}
+
+.test {
+    width: 430px;
+}
+
+.test2 {
+    margin-left: 300px;
+}

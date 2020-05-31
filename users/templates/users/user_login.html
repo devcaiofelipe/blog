@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block 'conteudo' %}
+
+<div class="container">
+    <form method="POST" action="{% url 'user_login' %}">
+        {% csrf_token %}
+        <br>
+        <br>
+        <div class="form-group">
+            <label for="username">Nome de Usuário</label>
+            <input type="text" name="username" class="form-control test" id="username" aria-describedby="emailHelp" placeholder="Nome de Usuário">
+        </div>
+        <div class="form-group">
+        <label for="password1">Senha</label>
+            <input type="password" name="password" class="form-control test" id="password1" placeholder="Senha">
+        </div>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+    </form>
+    <br/>
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-info" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}

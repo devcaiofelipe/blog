@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block 'conteudo' %}
+<div class="container">
+    <br>
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-info" role="alert">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    <form method="POST" action="{% url 'user_update_email' user.id %}">
+        {% csrf_token %}
+        <ul class="list-group pad">
+            <li class="list-group-item active"><h1 class="titlepage">Atualização de dados</h1></li>
+            <li class="list-group-item ls">
+                <div class="form-group">
+                    <label for="new_email">Novo e-mail:</label>
+                    <input type="text" name="new_email" value="{{ user.email }}" class="form-control test" id="new_email" placeholder="E-mail"/>
+                </div>
+            </li>
+            <li class="list-group-item ls">Criado em: {{ user.date_joined }}</li>
+            <li class="list-group-item active"></li>
+        </ul>
+        <a href="{% url 'user_profile' user.id %}">
+            <button type="submit" class="btn btn-primary botao">Salvar</button>
+        </a>
+    </form>
+</div>
+{% endblock %}

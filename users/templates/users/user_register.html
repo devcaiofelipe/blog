@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block 'conteudo' %}
+
+<div class="container">
+    <form method="POST" action="{% url 'user_register' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" name="firstname" class="form-control test" id="name" aria-describedby="emailHelp" placeholder="Nome"/>
+        </div>
+        <div class="form-group">
+            <label for="lastname">Sobrenome</label>
+            <input type="text" name="lastname" class="form-control test" id="lastname" aria-describedby="emailHelp" placeholder="Sobrenome"/>
+        </div>
+        <div class="form-group">
+            <label for="username">Usuário</label>
+            <input type="text" name="username" class="form-control test" id="username" aria-describedby="emailHelp" placeholder="Mínimo 6 letras"/>
+        </div>
+        <div class="form-group">
+            <label for="eemail">E-mail</label>
+            <input type="email" name="email" class="form-control test" id="eemail" aria-describedby="emailHelp" placeholder="E-mail"/>
+        </div>
+        <p>A senha precisa ter entre 4 e 8 caracteres.</p>
+        <div class="form-group">
+        <label for="password1">Senha</label>
+            <input type="password" name="password1" class="form-control test" id="password1" placeholder="Senha"/>
+        </div>
+        <div class="form-group">
+            <label for="password2">Confirmar Senha</label>
+            <input type="password" name="password2" class="form-control test" id="password2" placeholder="Confirme a senha"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar-me</button>
+        <br>
+        <br>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-info" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </form>
+</div>
+
+{% endblock %}

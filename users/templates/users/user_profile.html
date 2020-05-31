@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block 'conteudo' %}
+
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+        <br>
+        <div class="alert alert-info" role="alert">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    <ul class="list-group pad">
+        <li class="list-group-item active"><h1 class="titlepage">Configurações da conta</h1></li>
+        <li class="list-group-item ls">Nome: {{ user.first_name }}</li>
+        <li class="list-group-item">Sobrenome: {{ user.last_name }}</li>
+        <li class="list-group-item">Nome de Usuário: {{ user.username }}</li>
+        <li class="list-group-item">Email: {{ user.email }}</li>
+        <li class="list-group-item ls">Criado em:  {{ user.date_joined}}</li>
+        <li class="list-group-item active"></li>
+    </ul>
+    <a href="{% url 'user_update' user.id %}"><button type="submit" class="btn btn-primary botao" >Atualizar dados  <i class="fas fa-edit icon"></i></button></a>
+    <a href="{% url 'user_update_email' user.id %}"><button type="submit" class="btn btn-primary botao" >Alterar e-mail <i class="fas fa-edit icon"></i></button></a>
+    <a href="{% url 'user_update_password' user.id %}"><button type="submit" class="btn btn-primary botao" >Alterar senha <i class="fas fa-edit icon"></i></button></a>
+    <a href="{% url 'user_delete' user.id %}"><button type="submit" class="btn btn-primary botao">Excluir conta</button></a>
+
+</div>
+{% endblock %}
