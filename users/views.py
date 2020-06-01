@@ -4,7 +4,6 @@ from .utils import validating_new_user
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
-# # Create your views here.
 
 
 def user_index(request):
@@ -20,7 +19,7 @@ def user_register(request):
         password1 = request.POST['password1']
         password2 = request.POST['password2']
         email = request.POST['email']
-        # Funcao que verifica os dados para criar a conta, caso tudo esteja válido retorna True, se não retorna uma msg de info.
+        # Função que verifica os dados para criar a conta, caso tudo esteja válido retorna True, se não retorna uma msg de info.
         msg_info = validating_new_user(first_name, last_name, username, password1, password2, email)
         if msg_info == True:
             # Se tudo tiver válido, cria a conta, loga o usuário e redireciona para a página principal dos posts.
@@ -58,6 +57,7 @@ def user_logout(request):
 
 
 def user_update(request, user_id):
+    # View basicona só para alterar nome e sobrenome
     if request.method == 'POST':
         new_first_name = request.POST['new_first_name']
         new_last_name = request.POST['new_last_name']
