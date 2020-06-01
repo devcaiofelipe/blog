@@ -2,3 +2,7 @@
 - FontAwesome
 - Bootstrap
 - Pillow
+- whitenoise
+- gunicorn
+- python manage.py runserver
+- https://blogdjango-cf.herokuapp.com/ <- link da app hospedada no heroku
